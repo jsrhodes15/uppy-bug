@@ -1,23 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from "react";
+import Uploader from "./Uploader";
 
 function App() {
+  const [uploader, setUploader] = useState(false)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <section>
+        {uploader &&
+          <div className="uploader">
+            <div className="upload-container">
+              <button type="button" onClick={() => setUploader(false)}>X</button>
+              <Uploader/>
+            </div>
+          </div>
+        }
+
+      </section>
+
+      <button
+        className="App-link"
+        onClick={() => setUploader(true)}
+      >
+        Mount Uploader
+      </button>
     </div>
   );
 }
